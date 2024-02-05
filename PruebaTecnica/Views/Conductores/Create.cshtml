@@ -1,0 +1,72 @@
+﻿@model PruebaTecnica.Models.Conductore
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div>
+    <a class="btn btn-danger" asp-action="Index">Regresar al listado de Conductores</a>
+</div>
+
+<h1 class="text-primary text-center">REGISTRAR CONDUCTOR</h1>
+
+
+<hr />
+<div class="row d-flex justify-content-center">
+    <div class="col-md-4 d-flex justify-content-center">
+     <form asp-action="Create" method="post" class="row">
+     
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group col-6">
+                <input placeholder="Nombre Completo" asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group col-6">
+                <input placeholder="CUI" asp-for="Dpi" class="form-control" />
+                <span asp-validation-for="Dpi" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input placeholder="Cuenta con licencia Vigente?" asp-for="LicenciaVigente" class="form-control" />
+                <span asp-validation-for="LicenciaVigente" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input placeholder="Numero de Licencia" asp-for="NoLicencia" class="form-control" />
+                <span asp-validation-for="NoLicencia" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check m-3">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Disponibilidad" /> @Html.DisplayNameFor(model => model.Disponibilidad)
+                </label>
+            </div>
+            <div class="form-group mt-3">
+                <input placeholder="Tiempo Requerido" asp-for="TiempoRequerido" class="form-control" />
+                <span asp-validation-for="TiempoRequerido" class="text-danger"></span>
+            </div>
+@*             <div class="form-group">
+                <input placeholder="Teimpo" asp-for="TiempoAyudantes" class="form-control" />
+                <span asp-validation-for="TiempoAyudantes" class="text-danger"></span>
+            </div> *@
+            <div class="form-group mt-3">
+                <input placeholder="Gastos extras" asp-for="ViaticosEquipo" class="form-control" />
+                <span asp-validation-for="ViaticosEquipo" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input placeholder="Gastos Requeridos" asp-for="GastosRequeridos" class="form-control" />
+                <span asp-validation-for="GastosRequeridos" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3 ">
+                <label asp-for="IdVehiculo" class="control-label">Vehiculo asignado</label>
+                <select asp-for="IdVehiculo" class ="form-control" asp-items="ViewBag.IdVehiculo"></select>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="REGISTRAR CONDUCTOR" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

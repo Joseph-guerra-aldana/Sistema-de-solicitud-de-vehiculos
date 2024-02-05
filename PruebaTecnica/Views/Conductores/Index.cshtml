@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PruebaTecnica.Models.Conductore>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center text-primary">LISTADO DE CONDUCTORES</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-warning">REGISTRAR CONDUCTOR NUEVO</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <span>Nombre</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dpi)
+            </th>
+            <th>
+                <span>Licencia vigente</span>
+            </th>
+            <th>
+                <span>Numero de licencia</span>
+            </th>
+            <th>
+                <span>Disponible</span>
+            </th>
+            <th>
+                <span>Tiempo Requerido</span>
+            </th>
+
+            <th>
+                <span>Viaticos</span>
+            </th>
+            <th>
+                <span>Precio</span>
+            </th>
+            <th>
+                <span>Vehiculo asignado</span>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dpi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicenciaVigente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoLicencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponibilidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TiempoRequerido)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ViaticosEquipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GastosRequeridos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdVehiculoNavigation.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
